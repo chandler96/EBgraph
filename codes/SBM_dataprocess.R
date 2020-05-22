@@ -28,7 +28,7 @@ for(SEED in SEED.seq){
   for(K in K.seq){
     res <- getstat(eval(parse(text = paste0("SBM_", N, "_", SEED, "_", K))))
     index <- SEED
-    offset <- min(SEED.seq) - 1
+    offset <- min(K.seq) - 1
     E1.seed[index, K-offset] <- res$err[1] # MLE
     E2.seed[index, K-offset] <- res$err[2] # EB
     E3.seed[index, K-offset] <- res$err[3] # VBEM
