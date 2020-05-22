@@ -1,10 +1,10 @@
 source("lliks.R")
-eucore_net <- read_graph("../datas/EuCore/email-Eu-core.txt",
+eucore_net <- read_graph("../EuCore/email-Eu-core.txt",
                          format = "ncol",
                          directed = TRUE)
 eucore_net <- as.undirected(eucore_net, "collapse")
 # ground truth: 42 communities
-LAB_all <- read.table("../datas/EuCore/email-Eu-core-department-labels.txt", row.names = 1)
+LAB_all <- read.table("../EuCore/email-Eu-core-department-labels.txt", row.names = 1)
 LAB_all <- LAB_all[,1] + 1
 set_vertex_attr(eucore_net, "label", index = V(eucore_net), LAB_all)
 Y_all <- as_adjacency_matrix(eucore_net, type = "both",
