@@ -41,40 +41,6 @@ for(SEED in SEED.seq){
   }
 }
 
-# #png("./newestplots/picG4.png")
-# theme_update(plot.title = element_text(hjust = 0.5)) 
-# dat1 <- data.frame(x = 1:10, 
-#                    I1 = (1 - apply(10^E2.seed, 2, mean)/apply(10^E1.seed, 2, mean))*100,
-#                    I2 = (1 - apply(10^E2.seed, 2, mean)/apply(10^E3.seed, 2, mean))*100)
-# cols <- c("EB/MLE" = "#F8766D", "EB/VBEM" = "#619CFF")
-# p1 <- ggplot(dat1, aes(x)) +
-#   theme_classic() +
-#   theme(legend.title = element_blank(), axis.text.x=element_blank()) +
-#   #theme(legend.position = "none")
-#   geom_line(aes(y = I1, col = "EB/MLE")) +
-#   geom_line(aes(y = I2, col = "EB/VBEM")) + 
-#   #geom_vline(xintercept = which.min(dat1$E2), linetype = "dashed") + 
-#   scale_color_manual(values = cols) + 
-#   labs(x = "") + 
-#   labs(y = "mean RMSE reduction") +
-#   geom_hline(yintercept=0, linetype="dashed") + 
-#   theme(legend.position = "bottom")
-# p1
-# ## boxplot
-# dat2 <- data.frame(x = rep(rep(c(1:10), each = 100), 3), 
-#                    y = c(c(E1.seed), c(E2.seed), c(E3.seed)),
-#                    gp = rep(1:3, each = 1000))
-# p2 <- ggplot(dat2, aes(x = factor(x), y = y)) +
-#   theme_classic() + 
-#   geom_boxplot(aes(fill = factor(gp)), outlier.shape = NA, show.legend = FALSE) + 
-#   labs(x = "K") + 
-#   labs(y = "log10(RMSE)") +
-#   scale_fill_discrete(name = "", labels = c("MLE", "EB", "VBEM")) +
-#   theme(legend.position = "bottom") 
-# p2
-# grid.arrange(p2, p1, ncol = 1)
-# #dev.off()
-
 R1 <- apply(E3.seed, 2, mean)/apply(E1.seed, 2, mean)*100
 R2 <- apply(E3.seed, 2, mean)/apply(E2.seed, 2, mean)*100
 
@@ -138,13 +104,6 @@ table(apply(zsc.penal.seed, 1, which.max))
 table(apply(J.seed, 1, which.max))
 table(apply(ICL.seed, 1, which.max))
 
-# model selection error
-# e1 <- mean(abs(apply(zsc.penal2.seed,1, which.max) - apply(pmin(E1.seed, E2.seed, E3.seed), 1, which.min)))
-# e2 <- mean(abs(apply(zsc.penal.seed,1, which.max) - apply(pmin(E1.seed, E2.seed, E3.seed), 1, which.min)))
-# e3 <- mean(abs(apply(J.seed,1, which.max) - apply(pmin(E1.seed, E2.seed, E3.seed), 1, which.min)))
-# e4 <- mean(abs(apply(ICL.seed,1, which.max) - apply(pmin(E1.seed, E2.seed, E3.seed), 1, which.min)))
-
-
 myscale <- function(x){
   avg <- apply(x, 2, mean)
   (avg-min(avg))/(max(avg)-min(avg))
@@ -180,22 +139,22 @@ p3 <- ggplot(dat3, aes(factor(x), group = 1)) +
   theme(plot.margin=unit(c(0,0.5,0,0),"cm"))
 p3
 
+### contour plot ###
+
 # setEPS()
 # accuracy_length = 400
-# postscript(paste0("../0509/G_", N, "_", -logrho, "_", lambda, "_model_selection.eps"))
+# postscript(paste0("G_", N, "_", -logrho, "_", lambda, "_model_selection.eps"))
 # p3
 # dev.off()
 
-# 
-# 
-# png("./newestplots/picP4.png")
+# png("pic.png")
 # rho = 10^-1
 # lambda = 5
-# 
+
 # W <- function(x, y) {
 #   exp(-rho*((x-0.5)^2 + (y-0.5)^2))
 # }
-# 
+
 # x <- seq(0, 1, length = 100)
 # y <- x
 # z <- outer(x, y, W)
