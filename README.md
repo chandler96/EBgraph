@@ -1,6 +1,6 @@
 # EBgraph: An Empirical Bayes Approach to Graphon Estimation
 
-Source code and datasets for paper *An Empirical Bayes Approach to Graphon Estimation. Zhanhao Peng, Qing Zhou (2020).*
+Source code and datasets for paper * An empirical Bayes approach to stochastic blockmodels and graphons: shrinkage estimation and model selection. Zhanhao Peng, Qing Zhou (2021).*
 The codes were implemented under R 3.6.1. 
 
 ## Data sources:
